@@ -60,7 +60,6 @@ func (m Mail4Send) String() string {
 func init() {
 	// создает каталог для конфигов
 	// os.Mkdir(fmt.Sprintf("%s/umb_mail_robot",os.TempDir()),0777)
-	// читаем конфиг по умолчанияю numb/.../config.txt
 	// TK
 	Conf = u.ReadConf("")
 
@@ -115,9 +114,6 @@ func Work(Conf map[string]string, mdb uDB.MyDB, jobs <-chan Mail4Send, results c
 
 func main() {
 	// файл для логов
-	// log_fh, err := os.OpenFile(fmt.Sprintf("%s/umb_mail_robot/%s.log",os.TempDir(),time.Now().Format("2006-01-02")), os.O_RDWR | os.O_CREATE | os.O_APPEND, 0666)
-	// TK
-	// log_fh, err := os.OpenFile(fmt.Sprintf("/var/log/go.mail/%s.log", time.Now().Format("2006-01-02")), os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
 	log_fh, err := os.OpenFile(fmt.Sprintf("/tmp/%s_gomail.log", time.Now().Format("2006-01-02")), os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
 	if err != nil {
 		fmt.Println("error opening file: %v", err)
@@ -130,10 +126,6 @@ func main() {
 		log.Printf("umb_mail_robot::BeginDB::%s", err)
 	}
 	defer mdb.CloseDB()
-
-	// получаем конфиг для отправки почты
-	// var C map[string]string
-	// C, err = u.GetEMailConf(Conf, "ONLINE@OILTRADE.RU")
 
 	// получаем неотправленные письма
 	mails := getUnsentEMails(mdb)
