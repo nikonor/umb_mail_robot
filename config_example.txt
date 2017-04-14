@@ -1,0 +1,5 @@
+DBNAME=dbname;host=localhost;port=5432
+DBUSER=dbuser
+DBPASSWD=dbpassword
+noreply@domain.ru={"smtp": "smtp.yandex.ru", "imap": "imap.yandex.ru", "login": "noreply@domain.ru", "password": "topsecret"}
+online@domain.ru={"smtp": "smtp.yandex.ru", "imap": "imap.yandex.ru", "login": "online@domain.ru", "password": "topsecter"}
